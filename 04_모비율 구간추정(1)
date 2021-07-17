@@ -1,0 +1,14 @@
+import pandas as pd
+import numpy as np
+
+# 구글 드라이브 data 폴더의 bloodtype.csv 파일 불러오기
+from google.colab import drive
+drive.mount('/content/gdrive')
+df = pd.read_csv('/content/gdrive/My Drive/data/bloodtype.csv')
+
+n = len(df)  # 표본 크기
+s_p = len(df[df['혈액형']=='A']) / n  # 표본에서 혈액형이 A인 비율
+print('A 비율:', s_p)
+
+print('신뢰도 95% [', s_p-1.96*np.sqrt(s_p*(1-s_p)/n), ',', s_p+1.96*np.sqrt(s_p*(1-s_p)/n), ']')
+print('신뢰도 99% [', s_p-2.58*np.sqrt(s_p*(1-s_p)/n), ',', s_p+2.58*np.sqrt(s_p*(1-s_p)/n), ']')
