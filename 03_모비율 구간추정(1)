@@ -1,0 +1,7 @@
+import numpy as np
+
+n = int(input('표본 크기: '))
+s_p = float(input('표본 비율: '))
+
+print('신뢰도 95% [', s_p-1.96*np.sqrt(s_p*(1-s_p)/n), ',', s_p+1.96*np.sqrt(s_p*(1-s_p)/n), ']')
+print('신뢰도 99% [', s_p-2.58*np.sqrt(s_p*(1-s_p)/n), ',', s_p+2.58*np.sqrt(s_p*(1-s_p)/n), ']')
