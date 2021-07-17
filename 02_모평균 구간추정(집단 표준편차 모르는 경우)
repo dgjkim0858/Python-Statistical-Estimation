@@ -1,0 +1,15 @@
+import pandas as pd
+import numpy as np
+
+# 구글 드라이브 data 폴더의 led.csv 파일 불러오기
+from google.colab import drive
+drive.mount('/content/gdrive')
+df = pd.read_csv('/content/gdrive/My Drive/data/led.csv')
+
+n = len(df)  # 표본 크기
+s_mean = np.mean(df['수명'])  # 표본평균
+s_std = np.sqrt(np.sum((df['수명']-s_mean)**2)/(n-1))  # 표본표준편차
+print('표본평균:', s_mean, '표본표준편차:', s_std)
+
+print('신뢰도 95% [', s_mean-1.96*s_std/np.sqrt(n), ',', s_mean+1.96*s_std/np.sqrt(n), ']')
+print('신뢰도 99% [', s_mean-2.58*s_std/np.sqrt(n), ',', s_mean+2.58*s_std/np.sqrt(n), ']')
