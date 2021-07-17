@@ -1,0 +1,8 @@
+import numpy as np
+
+n = int(input('표본 크기: '))
+s_mean = float(input('표본 평균: '))
+std = float(input('모집단 표준편차: '))
+
+print('신뢰도 95% [', s_mean-1.96*std/np.sqrt(n), ',', s_mean+1.96*std/np.sqrt(n), ']')
+print('신뢰도 99% [', s_mean-2.58*std/np.sqrt(n), ',', s_mean+2.58*std/np.sqrt(n), ']')
